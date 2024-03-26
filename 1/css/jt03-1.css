@@ -1,0 +1,380 @@
+@charset "utf-8";
+
+/*  tipografias ----------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Besley:ital,wght@1,500&family=Inter:wght@400;500&display=swap');
+
+/*  reseteo: selector universal ---------------------------------------- */
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*  ---------- variables ------------------------------------------------------- */
+:root {
+  --color-textos: #676767;
+  --color-textos-light: rgb(248, 248, 248);
+
+  --color-fondo-claro: #E9E9E8;
+  --color-fondo-medio: #DEDDDB;
+  --color-fondo-oscuro: #3E3E3E;
+
+  --color-verde: #64695F;
+  --color-verde-dark: #545850;
+
+  --tipo-serif: 'Besley', serif;
+  --tipo-sans-serif: 'Inter', sans-serif;
+}
+
+/*  ------------- general --------------------------------------------------- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--tipo-sans-serif);
+    /* se retiran los 8 pixeles de margen que vienen predeterminados para que sus elementos contenidos "lleguen" hasta los bordes de la ventana del navegador */
+    margin: 0;
+    color: var(--color-textos);
+    background-color: var(--color-fondo-claro);
+
+    display: grid;
+    min-height: 100vh;
+    /* header y footer: altura de su contenido
+       main: altura que sobra */
+       grid-template-rows: auto 1fr auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--tipo-sans-serif);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+h2 {
+    line-height: 1.2;
+    margin-block-end: 1em;
+    color: var(--color-fondo-oscuro);
+}
+
+h2 span {
+    font-family: var(--tipo-serif);
+    font-size: .5em;
+    text-transform: capitalize;
+    color: var(--color-verde);
+
+    /* para que NO quede en la misma lÃ­nea que el texto anterior */
+    display: block;
+    padding-bottom: 6em;
+}
+
+p {
+    line-height: 28px;
+    font-weight: 400;
+    font-size: 1em;
+}
+
+/* para que "TODAS" las imÃ¡genes no sean
+       mayores que las cajas que las contienen
+       para evitar "scroll" horizontal */
+img {
+    /* medirÃ¡n, como mÃ¡ximo, el tamaÃ±o
+         del bloque html que las contiene */
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-textos-light);
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: .05em;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+    line-height: 28px;
+}
+
+/*caja contenedora centrada y con ancho mÃ¡ximo 
+  selector de tipo "clase" pq 
+  elementos html diferentes 
+  tendrÃ¡n caracterÃ­sticas visuales en comÃºn*/
+
+.container {
+    /* ancho mÃ¡ximo 1200px */
+    width: min(75rem, 100%);
+    /* centrado horizontal (si sobra espacio,
+        lo distribuye a izquierda y derecha) */
+    margin-inline: auto;
+    /* espacio entre el borde del elemento y su contenido */
+    padding: 1rem;
+
+    /* espaciado */
+    /* display: flex;
+    gap: 1rem; */
+}
+
+/*  ------------- header --------------------------------------------------- */
+header,
+footer {
+    background-color: var(--color-verde);
+    color: var(--color-textos-light);
+}
+
+#logo img {
+    width: 6em;
+    background-color: var(--color-textos-light);
+    padding: .25em;
+}
+
+.containerNav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+    width: min(75rem, 100%);
+    padding: 1em;
+}
+
+header nav ul {
+    gap: 3em;
+    font-weight: 400;
+    font-size: .85em;
+}
+
+/*  ------------- Sobre mi --------------------------------------------------- */
+.sobreMi h1 {
+    font-size: 5em;
+    color: var(--color-fondo-oscuro);
+    font-weight: 400;
+    line-height: 1em;
+    padding-bottom: .5em;
+    text-transform: none;
+    font-style: normal;
+    font-family: var(--tipo-serif);
+}
+
+.sobreMi p {
+    padding-bottom: 3em;
+}
+
+.sobreMi a {
+    color: #fff;
+    border: 1px solid #C67E7E;
+    background-color: #C67E7E;
+    border-radius: 200px;
+    padding: .5em 1em;
+    text-decoration: none;
+}
+
+.sobreMi a:hover {
+    color: #fff;
+    border: 1px solid #b36d6d;
+    background-color: #b36d6d;
+    border-radius: 200px;
+    padding: .5em 1em;
+    text-decoration: none;
+}
+
+.sobreMi img {
+    height: 100% auto;
+    border-radius: 5%;
+}
+
+.containerSobreMi {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(min(20em, 100%), 1fr));
+    padding-top: 8em;
+    padding-bottom: 1em;
+}
+
+/*  ------------- Historial Academico --------------------------------------------------- */
+#historialAcademico {
+    padding-top: 4em;
+    padding-bottom: 6em;
+}
+
+/* componente con todos los datos de cada integrante */
+.historialAcademico article {
+    padding-top: .5em;
+    padding-bottom: 2.5em;
+}
+
+.historialAcademico h3 {
+    color: var(--color-fondo-oscuro);
+    padding-bottom: .5em;
+    font-weight: 600;
+    font-size: 1em;
+  }
+
+.historialAcademico p {
+    padding-bottom: 2em;
+}
+
+.containerArticle {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(min(20em, 100%), 1fr));
+}
+
+/*  ------------- Equipo JT03 --------------------------------------------------- */
+#equipoJT03 {
+    padding-top: 4em;
+    padding-bottom: 6em;
+    background-color: var(--color-fondo-medio);
+}
+
+/* componente con todos los datos de cada integrante */
+.equipo article {
+    background-color: var(--color-textos-light);
+    padding-top: .5em;
+    padding-bottom: 2.5em;
+    padding-inline: 2em;
+    border-radius: .25em;
+    text-align: center
+}
+
+.equipo img {
+    /* imagen redonda */
+    border-radius: 50%;
+    /* tamaÃ±o y proporciÃ³n */
+    width: auto;
+    aspect-ratio: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5em;
+}
+
+.equipoTextos h3 {
+    color: var(--color-fondo-oscuro);
+    padding-bottom: .5em;
+    font-weight: 600;
+  }
+
+.equipo p {
+    padding-bottom: 2em;
+}
+
+.equipo a {
+    color: #C67E7E;
+}
+
+.integrantes {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(min(20em, 100%), 1fr));
+}
+
+/*  ------------- Comitente --------------------------------------------------- */
+#comitente {
+    background-color: var(--color-textos-light);
+    padding-top: 4em;
+    padding-bottom: 4em;
+}
+
+.comitente p {
+    padding-bottom: 2em;
+}
+
+.comitente a {
+    color: #C67E7E;
+    border: 1px solid #C67E7E;
+    border-radius: 200px;
+    padding: .5em 1em;
+    text-decoration: none;
+}
+
+.comitente a:hover {
+    color: #fff;
+    border: 1px solid #b36d6d;
+    background-color: #b36d6d;
+    border-radius: 200px;
+    padding: .5em 1em;
+    text-decoration: none;
+}
+
+
+/*  ------------- Datos Academicos --------------------------------------------------- */
+#datosAcademicos {
+    padding-top: 4em;
+    padding-bottom: 4em;
+}
+
+.datosAcademicos img {
+    /* tamaÃ±o y proporciÃ³n */
+    width: auto;
+    aspect-ratio: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5em;
+    width: 247px;
+}
+
+.datosTextos h3 {
+    color: var(--color-fondo-oscuro);
+    padding-bottom: .5em;
+    font-weight: 500;
+  }
+
+.datosAcademicos p {
+    padding-bottom: 2em;
+}
+
+.datosAcademicos a {
+    color: #C67E7E;
+}
+
+.containerDatos {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(min(20em, 100%), 1fr));
+}
+
+
+/*  ------------- footer --------------------------------------------------- */
+.footerDisclaimer {
+    padding-block: 2em;
+}
+
+.footerCopyright {
+    text-align: center;
+    align-items: center;
+    font-size: .85em;
+
+    padding-block: 1em;
+    border-block-start: solid 1px var(--color-textos-light);
+    /* separaciÃ³n vertical entre el texto y la lÃ­nea */
+}
+
+
+/*  ------------- mediaqueries --------------------------------------------------- */
+
+/* Tablets */
+@media screen and (min-width: 768px) {
+
+    .containerNav {
+        display: flex;
+        flex-direction: row;
+    }
+
+    header nav ul {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
